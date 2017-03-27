@@ -1,2 +1,2 @@
 # Django_Chavez
-Formation Django
+Formation Django CHAVEZ
