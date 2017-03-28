@@ -47,6 +47,48 @@ class Setting(Parano,models.Model):
         blank=True
     )
 
+class Group(Parano,models.Model):
+    settings = models.ForeignKey(
+        'Setting',
+        null=True,
+        blank=True,
+        verbose_name="Paramètres",
+        related_name="%(app_label)s_%(class)s_setting"
+    )
+
+    avatar = models.ImageField(
+        null=True,
+        blank=True
+    )
+
+    name = models.CharField(
+        max_length=60,
+        verbose_name="Nom"
+    )
+
+    class Meta:
+        app_label="todo"
+
+class Relation(models.Model):
+    group = models.ForeignKey(
+        'Group',
+        null=True,
+        blank=True,
+        verbose_name="Group",
+        related_name="%(app_label)s_%(class)s_group"
+    )
+
+    member = models.ForeignKey(
+        'Member',
+        null=True,
+        blank=True,
+        verbose_name="Member",
+        related_name="%(app_label)s_%(class)s_member"
+    )
+
+    class Meta:
+        app_label="todo"
+
 class Member(models.Model):
     settings = models.ForeignKey(
         'Setting',

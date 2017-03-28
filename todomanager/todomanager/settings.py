@@ -53,11 +53,11 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'todomanager.urls'
 
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+TEMPLATES = [ #liste qui contient un dictionnaire
+    { #dictionnaire
+        'BACKEND': 'django.template.backends.django.DjangoTemplates', #moteur du rendu du template
+        'DIRS': [], #liste de repertoire où va aller chercher le template
+        'APP_DIRS': True, #verifie s'il y a un template called templates
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',

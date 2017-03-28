@@ -14,7 +14,16 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from todo.views import TaskListView
+#from todo.views import CreateView
+from todo.views import TaskDetailView
+#from todo.views import TaskUpdateView
+# from todo.views import TaskDeleteView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', TaskListView.as_view(),name='task-list'),
+    url(r'^(?P<pk>\d+)/$', TaskDetailView.as_view(), name='tasks-detail'),
+    #url(r'^(?P<pk>\d+)/update/', TaskUpdateView.as_view(), name='tasks-update'),
+    # url(r'^(?P<pk>\d+)/delete/', TaskDeleteView.as_view(), name='tasks-delete'), # r = rough
 ]
