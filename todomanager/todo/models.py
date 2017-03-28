@@ -109,6 +109,10 @@ class Member(models.Model):
 
     class Meta:
         app_label="todo"
+        ordering=["user__date_joined"]
+
+    def __str__(self):
+        return str(self.user.username)
 
 class Task(Parano, models.Model):
     status_choices = (
@@ -163,5 +167,6 @@ class Task(Parano, models.Model):
     def __str__(self):
         return str(self.name) #affichage
 
-    # def get_absolute_url(self):
-    #     return reverse_lazy('todo:tasks:retrieve', kwargs={'pk': self.id})
+    def get_absolute_url(self):
+        return '/'+str(self.id)+'/'
+        #return reverse_lazy('todo:tasks:retrieve', kwargs={'pk': self.id})
